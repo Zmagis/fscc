@@ -6,27 +6,12 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {useColorScheme} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import styled, {ThemeProvider} from 'styled-components/native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {ThemeProvider} from 'styled-components/native';
 import {theme} from './theme';
-import ArrowLoop from '@assets/icons/ArrowLoop.svg';
+import {Auth} from './flows/Auth';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -37,17 +22,9 @@ function App(): React.JSX.Element {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container>
-        <ArrowLoop />
-      </Container>
+      <Auth />
     </ThemeProvider>
   );
 }
 
 export default App;
-
-const Container = styled.View`
-  background-color: ${({theme}) => theme.colors.primary};
-  height: 100%;
-  width: 100%;
-`;
