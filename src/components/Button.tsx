@@ -1,19 +1,29 @@
 import React, {memo} from 'react';
-import styled from 'styled-components/native';
+import styled, {useTheme} from 'styled-components/native';
 import {Pressable} from 'react-native';
+import {Loader} from './Loader';
 
 type ButtonProps = {
   title: string;
   disabled?: boolean;
+  loading?: boolean;
   onPress: () => void;
 };
 
 export const Button = memo<ButtonProps>(
-  ({title, disabled = false, onPress}) => (
-    <Container disabled={disabled} onPress={onPress}>
-      <Text disabled={disabled}>{title}</Text>
-    </Container>
-  ),
+  ({title, disabled = false, loading = false, onPress}) => {
+    const theme = useTheme();
+
+    return (
+      <Container disabled={disabled} onPress={onPress}>
+        {loading ? (
+          <Loader color={theme.colors.background} />
+        ) : (
+          <Text disabled={disabled}>{title}</Text>
+        )}
+      </Container>
+    );
+  },
 );
 
 const Container = styled(Pressable)<{disabled: boolean}>`
