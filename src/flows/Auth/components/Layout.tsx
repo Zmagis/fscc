@@ -1,5 +1,5 @@
 import React, {PropsWithChildren, memo} from 'react';
-import {SafeAreaView} from 'react-native';
+import {Platform, SafeAreaView} from 'react-native';
 import styled from 'styled-components/native';
 import ArrowLoop from '@assets/icons/ArrowLoop.svg';
 import {Image} from '@components/Image';
@@ -14,11 +14,13 @@ export const Layout = memo<PropsWithChildren>(({children}) => (
         <ArrowLoopBig width="327" height="327" />
         <ArrowLoopSmall width="222" height="222" />
       </Header>
-      <Body>
-        <RoundAccessory />
-        <OMS />
-        {children}
-      </Body>
+      <OuterContainer>
+        <Body>
+          <RoundAccessory />
+          <OMS />
+          {children}
+        </Body>
+      </OuterContainer>
       <Footer>
         <Image source={require('@assets/images/Logo.png')} />
       </Footer>
@@ -28,12 +30,18 @@ export const Layout = memo<PropsWithChildren>(({children}) => (
 
 const Container = styled.View`
   background-color: ${({theme}) => theme.colors.primary};
-  width: 100%;
   height: 100%;
 `;
 
+const OuterContainer = styled.KeyboardAvoidingView.attrs(() => ({
+  behavior: Platform.OS === 'ios' ? 'padding' : 'height',
+}))`
+  background-color: ${({theme}) => theme.colors.primary};
+`;
+
 const InnerContainer = styled(SafeAreaView)`
-  height: 100%;
+  flex: 1;
+  justify-content: flex-end;
 `;
 
 const Header = styled.View`
@@ -59,7 +67,6 @@ const ArrowLoopSmall = styled(ArrowLoop)`
 `;
 
 const Body = styled.View`
-  flex: 1;
   align-items: center;
   padding-top: 100px;
   padding-horizontal: 20px;
@@ -81,4 +88,5 @@ const OMS = styled(Title)`
 const Footer = styled.View`
   align-items: center;
   justify-content: flex-end;
+  flex: 1;
 `;
