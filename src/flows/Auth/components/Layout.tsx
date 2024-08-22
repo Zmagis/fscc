@@ -35,9 +35,7 @@ const Container = styled.View`
 
 const OuterContainer = styled.KeyboardAvoidingView.attrs(() => ({
   behavior: Platform.OS === 'ios' ? 'padding' : 'height',
-}))`
-  background-color: ${({theme}) => theme.colors.primary};
-`;
+}))``;
 
 const InnerContainer = styled(SafeAreaView)`
   flex: 1;
