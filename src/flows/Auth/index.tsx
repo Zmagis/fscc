@@ -9,7 +9,7 @@ import {layoutAnimation} from '@utils/animation';
 export const Auth = () => {
   const [email, setEmail] = React.useState('');
 
-  const login = useCallback((newEmail: string) => {
+  const finishLogin = useCallback((newEmail: string) => {
     layoutAnimation();
     setEmail(newEmail);
   }, []);
@@ -23,7 +23,7 @@ export const Auth = () => {
     <Layout>
       <Container>
         {!email ? (
-          <LogInForm finishLogin={login} />
+          <LogInForm finishLogin={finishLogin} />
         ) : (
           <Home email={email} logout={logout} />
         )}
