@@ -2,7 +2,7 @@ import React, {PropsWithChildren, memo} from 'react';
 import {Platform, SafeAreaView} from 'react-native';
 import styled from 'styled-components/native';
 import ArrowLoop from '@assets/icons/ArrowLoop.svg';
-import {Image} from '@components/Image';
+import {Image as ImageComponent} from '@components/Image';
 import Title from '@assets/icons/Title.svg';
 
 const HEADER_HEIGHT = 200;
@@ -89,4 +89,9 @@ const Footer = styled.View`
   align-items: center;
   justify-content: flex-end;
   flex: 1;
+`;
+
+const Image = styled(ImageComponent)`
+  width: 47px;
+  height: 30px;
 `;

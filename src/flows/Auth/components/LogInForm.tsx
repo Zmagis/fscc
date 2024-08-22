@@ -11,7 +11,7 @@ type LogInFormProps = {
   finishLogin: (email: string) => void;
 };
 
-export const LogInForm = memo<LogInFormProps>(({finishLogin}) => {
+export const LogInForm = memo<LogInFormProps>(({login: finishLogin}) => {
   const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
 

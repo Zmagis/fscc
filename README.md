@@ -19,4 +19,4 @@ yarn ios
 ## Login
 
 - Use any email you want
-- For password use 'emilyspass'
+- For password, use 'emilyspass'
